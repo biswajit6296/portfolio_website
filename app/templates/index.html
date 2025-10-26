@@ -704,6 +704,19 @@
     <!-- Template Javascript -->
     <!-- <script src="js/main.js"></script> -->
     <script src="{{ url_for('static', path='js/main.js') }}"></script>
+
+     <!-- ✅ Add n8n Chat Script (wrapped in raw block to avoid Jinja parsing errors) -->
+      {% raw %}
+      <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        createChat({
+          webhookUrl: 'https://your-n8n-instance.n8n.cloud/webhook/chatbot',
+          // Optional customization:
+          // initialMessage: 'Hey there! How can I help you today?',
+          // theme: { primaryColor: '#007bff' },
+        });
+      </script>
+      {% endraw %}
 </body>
 
 </html>
